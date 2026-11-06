@@ -1,1 +1,29 @@
+# PlatformIO and Arduino build output
 .pio/
+build/
+
+# Logs
+*.log
+
+# Editors and IDEs
+.idea
+.vscode
+*.swp
+*~
+.DS_Store
+
+# Agent tooling
+.claude/
+.codex/
+.agents/
+.mcp.json
+
+# Home-directory dotfiles (sandbox mounts land in the checkout)
+.bash_profile
+.bashrc
+.profile
+.zprofile
+.zshrc
+.gitconfig
+.gitmodules
+.ripgreprc

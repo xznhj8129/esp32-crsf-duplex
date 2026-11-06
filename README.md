@@ -16,11 +16,11 @@ computer / USB-UART  ==full duplex==  ESP32  --one wire, inverted--  ELRS TX mod
 
 ## Variants
 
-| Sketch | Board | Computer side | Module side | Baud | Debug output |
+| Sketch | Board | Computer side | Module side | Debug output |
 |---|---|---|---|---|---|
-| [`crsf_hdtofd_usbcdc`](crsf_hdtofd_usbcdc/crsf_hdtofd_usbcdc.ino) | ESP32 Dev Module (classic ESP32) | the board's own USB port (UART0, GPIO1/GPIO3) | UART1 on GPIO4 | 921600 | none |
-| [`crsf_hdtofd`](crsf_hdtofd/crsf_hdtofd.ino) | classic ESP32 | external USB-UART (e.g. CP2102) on UART2, TX GPIO17 / RX GPIO16 | UART1 on GPIO4 | 115200 | 1 Hz counters on the board's USB port at 921600 |
-| [`crsf_hd_fd_c3`](crsf_hd_fd_c3/crsf_hd_fd_c3.ino) | ESP32-C3 | external USB-UART on UART1, TX GPIO21 / RX GPIO20 | UART0 on GPIO3 | 115200 | none |
+| [`crsf_hdtofd_usbcdc`](crsf_hdtofd_usbcdc/crsf_hdtofd_usbcdc.ino) | ESP32 Dev Module (classic ESP32) | the board's own USB port (UART0, GPIO1/GPIO3) | UART1 on GPIO4 | none |
+| [`crsf_hdtofd`](crsf_hdtofd/crsf_hdtofd.ino) | classic ESP32 | external USB-UART (e.g. CP2102) on UART2, TX GPIO17 / RX GPIO16 | UART1 on GPIO4 | 1 Hz counters on the board's USB port at 921600 |
+| [`crsf_hd_fd_c3`](crsf_hd_fd_c3/crsf_hd_fd_c3.ino) | ESP32-C3 | external USB-UART on UART1, TX GPIO21 / RX GPIO20 | UART0 on GPIO3 | none |
 
 Both sides of a converter run at the same baud, set by `BAUD` in the sketch.
 The ELRS module locks to the baud of the first CRSF it receives after
@@ -137,7 +137,3 @@ Build with the Arduino IDE, board "ESP32C3 Dev Module".
 Point the computer-side program at the converter's serial port and baud, for
 example crsfproxy with `--device /dev/ttyUSB0 --baud 921600` for the USB-port
 variant. crsfproxy's README covers its options.
-
-The [ESP32P4FPV](https://github.com/xznhj8129/ESP32P4FPV) firmware's
-half-duplex CRSF path (`main/crsf_wire.c`) uses the same pad technique
-directly on the P4, without a separate converter.
